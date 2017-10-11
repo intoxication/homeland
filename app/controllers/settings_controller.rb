@@ -42,7 +42,7 @@ class SettingsController < ApplicationController
 
     @user.soft_delete
     sign_out
-    redirect_to root_path, notice: "账号删除成功。"
+    redirect_to root_path, notice: "Account deleted successfully."
   end
 
   def auth_unbind
@@ -68,7 +68,7 @@ class SettingsController < ApplicationController
 
   def update_basic
     if @user.update(user_params)
-      redirect_to setting_path, notice: "更新成功"
+      redirect_to setting_path, notice: "update completed"
     else
       render "show"
     end
@@ -77,7 +77,7 @@ class SettingsController < ApplicationController
   def update_profile
     if @user.update(user_params)
       @user.update_profile_fields(params[:user][:profiles])
-      redirect_to profile_setting_path, notice: "更新成功"
+      redirect_to profile_setting_path, notice: "update completed"
     else
       render "profile"
     end
@@ -93,7 +93,7 @@ class SettingsController < ApplicationController
     end
 
     if @user.update_reward_fields(res)
-      redirect_to reward_setting_path, notice: "更新成功"
+      redirect_to reward_setting_path, notice: "update completed"
     else
       render "reward"
     end
@@ -101,7 +101,7 @@ class SettingsController < ApplicationController
 
   def update_password
     if @user.update_with_password(user_params)
-      redirect_to new_session_path(:user), notice: "密码更新成功，现在你需要重新登陆。"
+      redirect_to new_session_path(:user), notice: "Password update is successful, and now you need to re-login."
     else
       render "password"
     end
