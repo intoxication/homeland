@@ -8,9 +8,9 @@
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn btn-default" id="node-selector-button"
-                data-toggle="modal" data-target="#node-selector"><%= @topic.node&.name || '选择节点...' %></button>
+                data-toggle="modal" data-target="#node-selector"><%= @topic.node&.name || 'Select node ...' %></button>
       </div>
-      <%= f.text_field :title, class: "form-control", placeholder: "在这里填写标题" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Fill in the title here" %>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
   <% if Setting.has_module?(:team) %>
     <% if current_user.team_collection.any? %>
     <div class='form-group'>
-      <%= f.input :team_id, collection: current_user.team_collection, include_blank: '不要关联组织' %>
+      <%= f.input :team_id, collection: current_user.team_collection, include_blank: 'Do not associate the organization' %>
     </div>
     <% end %>
   <% end %>
@@ -31,6 +31,6 @@
   <div class="form-group hide-ios">
     <%= f.submit t("common.save"), class: "btn btn-primary col-xs-2", 'data-disable-with' => t("common.saving"), 'data-tb' => "save-topic" %>
 
-    <div class="pull-right hide-ios"><a href="/markdown" target="_blank"><i class="fa fa-tip"></i> 排版说明</a></div>
+    <div class="pull-right hide-ios"><a href="/markdown" target="_blank"><i class="fa fa-tip"></i> Typographic instructions</a></div>
   </div>
 <% end %>
