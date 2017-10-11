@@ -27,7 +27,8 @@
 
       <% if @topic.excellent? %>
         <div class="label-awesome">
-          <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
+          <i class="fa fa-diamond awesome"></i> 
+This post has been set to the essence of posts!
           <% if admin? %>
           <div class="pull-right">
             <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
@@ -58,7 +59,7 @@
     <% else %>
     <div id="replies" class="panel panel-default" data-last-floor="<%= @replies.count(:all) %>">
       <div class="total panel-heading hide-ios">
-        共收到 <b><%= @topic.replies_count %></b> 条回复
+        共收到 <b><%= @topic.replies_count %></b>Reply
       </div>
       <div class="items panel-body">
         <%= render partial: "/replies/reply", collection: @replies %>
@@ -68,16 +69,18 @@
 
   <% if current_user %>
     <% if @topic.closed? %>
-      <div class="alert alert-info">此话题已经于 <%= l @topic.closed_at, format: :long %> 关闭，不再接受任何回帖。</div>
+      <div class="alert alert-info">
+This topic has been <%= l @topic.closed_at, format: :long %> 
+Close, no longer accept any Replies.</div>
     <% else %>
       <div id="reply" class="panel panel-default">
-        <div class="panel-heading hide-ios">回帖</div>
+        <div class="panel-heading hide-ios">Replies</div>
         <div class="panel-body">
         <% if can? :create, Reply %>
           <%= render 'reply_form' %>
         <% else %>
           <div class="alert alert-info">
-            当前设置新手用户不能在 22:00 ~ 9:00 发帖。
+            The current set of novice users can not post at 22:00 ~ 9:00.
           </div>
         <% end %>
         </div>
