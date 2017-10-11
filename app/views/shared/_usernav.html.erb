@@ -21,7 +21,7 @@
       if admin?
         li << "<div class='divider'></div>"
         if params[:controller].start_with?("admin")
-          li << link_to("回到前台", main_app.root_path)
+          li << link_to("Back to the front ", main_app.root_path)
         else
           li << link_to(t("menu.admin"), "/admin")
         end
@@ -42,7 +42,7 @@
   <li class="nav-search hidden-xs hidden-sm">
     <form class="navbar-form form-search active" action="/search" method="GET">
       <div class="form-group">
-        <input class="form-control" name="q" type="text" value="<%= params[:q] %>" placeholder="搜索本站内容" />
+        <input class="form-control" name="q" type="text" value="<%= params[:q] %>" placeholder="Search site content" />
       </div>
       <i class="fa btn-search fa-search"></i>
     </form>
@@ -53,7 +53,7 @@
   badge_class = "new" if unread_notify_count > 0
   %>
   <li class="notification-count">
-    <a href="<%= main_app.notifications_path %>" class="<%= badge_class %>" title="通知"><i class="fa fa-bell"></i><span class="count"><%= unread_notify_count %></span></a>
+    <a href="<%= main_app.notifications_path %>" class="<%= badge_class %>" title="Notice"><i class="fa fa-bell"></i><span class="count"><%= unread_notify_count %></span></a>
   </li>
   <li>
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
