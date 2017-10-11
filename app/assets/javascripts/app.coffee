@@ -154,8 +154,8 @@ AppView = Backbone.View.extend
 
   likeableAsLiked : (el) ->
     likes_count = el.data("count")
-    el.data("state","active").attr("title", "取消赞").addClass("active")
-    $('span',el).text("#{likes_count} 个赞")
+    el.data("state","active").attr("title", "Dislike").addClass("active")
+    $('span',el).text("#{likes_count} Praise")
 
   initCable: () ->
     if !window.notificationChannel && App.isLogined()
@@ -227,7 +227,7 @@ AppView = Backbone.View.extend
         success: (res) ->
           if res.code == 0
             btn.addClass('active').attr("title", "")
-            span.text("取消关注")
+            span.text("unsubscribe")
             followerCounter.text(res.data.followers_count)
     return false
 
@@ -237,12 +237,12 @@ AppView = Backbone.View.extend
     span = btn.find("span")
     if btn.hasClass("active")
       $.post("/#{userId}/unblock")
-      btn.removeClass('active').attr("title", "忽略后，社区首页列表将不会显示此用户发布的内容。")
-      span.text("屏蔽")
+      btn.removeClass('active').attr("title", "When ignored, the community home page list will not show the content posted by this user.")
+      span.text("shield")
     else
       $.post("/#{userId}/block")
       btn.addClass('active').attr("title", "")
-      span.text("取消屏蔽")
+      span.text("Unblock")
     return false
 
   blockNode: (e) ->
@@ -251,12 +251,12 @@ AppView = Backbone.View.extend
     span = btn.find("span")
     if btn.hasClass("active")
       $.post("/nodes/#{nodeId}/unblock")
-      btn.removeClass('active').attr("title", "忽略后，社区首页列表将不会显示这里的内容。")
-      span.text("忽略节点")
+      btn.removeClass('active').attr("title", "After ignoring, the community home page list will not show the contents here.")
+      span.text("Ignore the node")
     else
       $.post("/nodes/#{nodeId}/block")
       btn.addClass('active').attr("title", "")
-      span.text("取消屏蔽")
+      span.text("Unblock")
     return false
 
   reLoadRucaptchaImage: (e) ->
@@ -287,8 +287,8 @@ AppView = Backbone.View.extend
       bufferPx: 50
       localMode: true
       loading:
-        finishedMsg: '<div style="text-align: center; padding: 5px;">已到末尾</div>'
-        msgText: '<div style="text-align: center; padding: 5px;">载入中...</div>'
+        finishedMsg: '<div style="text-align: center; padding: 5px;">Is at the end</div>'
+        msgText: '<div style="text-align: center; padding: 5px;">loading...</div>'
         img: 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
   initScrollEvent: ->
