@@ -45,7 +45,7 @@ module TopicsHelper
 
   def topic_excellent_tag(topic)
     return "" unless topic.excellent?
-    content_tag(:i, "", title: "精华帖", class: "fa fa-diamond", data: { toggle: "tooltip" })
+    content_tag(:i, "", title: "Essentials", class: "fa fa-diamond", data: { toggle: "tooltip" })
   end
 
   def topic_close_tag(topic)
