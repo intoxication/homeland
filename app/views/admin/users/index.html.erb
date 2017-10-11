@@ -1,15 +1,16 @@
 <% content_for :sitemap do %>
-  <span class="current">用户</span>
+  <span class="current">User</span>
 <% end %>
 <div class="toolbar">
   <form class="form-inline" action="<%= admin_users_path %>">
     <div class="form-group">
-      <input type="text" name="q" class="form-control" value="<%= params[:q] %>" placeholder="用户名/Email" />
+      <input type="text" name="q" class="form-control" value="<%= params[:q] %>" placeholder="User Name/Email" />
     </div>
     <div class="form-group">
-      <%= select_tag(:type, options_for_select([['全部类别',''], ['组织','Team']], params[:type]), class: 'form-control') %>
+      <%= select_tag(:type, options_for_select([['
+All categories',''], ['organization','Team']], params[:type]), class: 'form-control') %>
     </div>
-    <button class="btn btn-default">搜索</button>
+    <button class="btn btn-default">search for</button>
   </form>
 </div>
 
