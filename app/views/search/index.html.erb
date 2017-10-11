@@ -2,12 +2,12 @@
 
 <div class="search-results panel panel-default">
   <div class="panel-heading clearfix">
-    关于 “<%= params[:q] %>” 的搜索结果, 共 <%= @result.records.total %> 条
+    on “<%= params[:q] %>” Of search results <%= @result.records.total %> 条
   </div>
 
   <div class="panel-body">
     <% if @result.records.total == 0 %>
-      <div class="no-result">没有搜索到任何有关 “<%= params[:q]%>” 的内容</div>
+      <div class="no-result">Did not search for anything related “<%= params[:q]%>”Content</div>
     <% else %>
       <% @result.records.each_with_hit do |item, hit| %>
         <% partial_view_name = item.class.name.downcase -%>
