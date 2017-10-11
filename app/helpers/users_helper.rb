@@ -5,7 +5,7 @@ module UsersHelper
 
   # 生成用户 login 的链接，user 参数可接受 user 对象或者 字符串的 login
   def user_name_tag(user, options = {})
-    return "匿名".freeze if user.blank?
+    return "anonymous".freeze if user.blank?
 
     if user.is_a? String
       user_type = :user
@@ -84,10 +84,10 @@ module UsersHelper
     blocked = current_user.block_node?(node)
     class_names = "btn btn-default btn-sm button-block-node"
     icon = '<i class="fa fa-eye-slash"></i>'
-    if blocked
-      link_to raw("#{icon} <span>取消屏蔽</span>"), "#", title: "忽略后，社区首页列表将不会显示这里的内容。", "data-id" => node.id, class: "#{class_names} active"
+    if blockedAfter ignoring, the community home page list will not show the contents here.
+      link_to raw("#{icon} <span>Unblock</span>"), "#", title: "After ignoring, the community home page list will not show the contents here.", "data-id" => node.id, class: "#{class_names} active"
     else
-      link_to raw("#{icon} <span>忽略节点</span>"), "#", title: "", "data-id" => node.id, class: class_names
+      link_to raw("#{icon} <span>Ignore the node</span>"), "#", title: "", "data-id" => node.id, class: class_names
     end
   end
 
@@ -99,9 +99,9 @@ module UsersHelper
     class_names = "button-block-user btn btn-default btn-block"
     icon = '<i class="fa fa-eye-slash"></i>'
     if blocked
-      link_to raw("#{icon} <span>取消屏蔽</span>"), "#", title: "忽略后，社区首页列表将不会显示此用户发布的内容。", "data-id" => user.login, class: "#{class_names} active"
+      link_to raw("#{icon} <span>Unblock</span>"), "#", title: "When ignored, the community home page list will not show the content posted by this user.", "data-id" => user.login, class: "#{class_names} active"
     else
-      link_to raw("#{icon} <span>屏蔽</span>"), "#", title: "", "data-id" => user.login, class: class_names
+      link_to raw("#{icon} <span>shield</span>"), "#", title: "", "data-id" => user.login, class: class_names
     end
   end
 
@@ -115,9 +115,9 @@ module UsersHelper
     icon = '<i class="fa fa-user"></i>'
     login = user.login
     if followed
-      link_to raw("#{icon} <span>取消关注</span>"), "#", "data-id" => login, class: "#{class_names} active"
+      link_to raw("#{icon} <span>unsubscribe</span>"), "#", "data-id" => login, class: "#{class_names} active"
     else
-      link_to raw("#{icon} <span>关注</span>"), "#", title: "", "data-id" => login, class: class_names
+      link_to raw("#{icon} <span>attention</span>"), "#", title: "", "data-id" => login, class: class_names
     end
   end
 
@@ -125,6 +125,6 @@ module UsersHelper
     return "" if user.blank?
     return "" unless user.reward_enabled?
     opts[:class] ||= "btn btn-success"
-    link_to icon_tag("qrcode", label: "打赏支持"), main_app.reward_user_path(user), remote: true, class: opts[:class]
+    link_to icon_tag("qrcode", label: "Support support"), main_app.reward_user_path(user), remote: true, class: opts[:class]
   end
 end
