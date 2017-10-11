@@ -3,10 +3,10 @@
 %>
 
 <% if topic.blank? %>
-  <div class="media-body">相关信息已删除</div>
+  <div class="media-body">Related information has been deleted</div>
 <% else %>
   <div class="media-heading">
-    在 <%= topic_title_tag(topic) %> 提及你：
+    in <%= topic_title_tag(topic) %> Mention you：
   </div>
   <div class="media-content summary markdown">
     <%= topic.body_html %>
