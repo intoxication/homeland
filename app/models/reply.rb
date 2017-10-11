@@ -20,15 +20,15 @@ class Reply < ApplicationRecord
   scope :fields_for_list, -> { select(:topic_id, :id, :body, :updated_at, :created_at) }
 
   validates :body, presence: true, unless: -> { system_event? }
-  validates :body, uniqueness: { scope: [:topic_id, :user_id], message: "不能重复提交。" }, unless: -> { system_event? }
+  validates :body, uniqueness: { scope: [:topic_id, :user_id], message: "Can not be repeated." }, unless: -> { system_event? }
   validate do
     ban_words = (Setting.ban_words_on_reply || "").split("\n").collect(&:strip)
     if body.strip.downcase.in?(ban_words)
-      errors.add(:body, "请勿回复无意义的内容，如你想收藏或赞这篇帖子，请用帖子后面的功能。")
+      errors.add(:body, "Please do not reply to meaningless content, such as you want to collect or like this post, please use the post features behind.")
     end
 
     if topic&.closed?
-      errors.add(:topic, "已关闭，不再接受回帖或修改回帖。")
+      errors.add(:topic, "Has been closed, no longer accept Huitie or modify Huitie.")
     end
 
     if reply_to_id
