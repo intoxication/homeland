@@ -4,14 +4,14 @@
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="heading">删除我的账号</div>
+        <div class="heading">Delete my account</div>
 
         <%= form_with(model: @user, url: setting_path, method: :delete) do |f| %>
           <%= render "shared/error_messages", :target => resource if params[:by] == "destroy" %>
           <input type="hidden" name="by" value="destroy" />
           <div class="form-group">
-            <p>当然不在想使用这个账号的时候，可以选择删除账号。</p>
-            <p>删除以后数据将会保留，以匿名的方式存在，你的账号将无法再登陆。</p>
+            <p>Of course, do not want to use this account, you can choose to delete the account.</p>
+            <p>After the deletion of the data will be retained in an anonymous way, your account will no longer be able to login.</p>
           </div>
           <div class="form-group">
             <%= f.password_field :current_password, class: "form-control", placeholder: t("users.confirm_delete_account") %>
@@ -19,7 +19,7 @@
           <%= f.submit t("users.ensure_to_delete"), :class => "btn btn-danger", 'data-disable-with' => t("common.submitting") %>
         <% end %>
 
-        <div class="heading">绑定其他帐号用于登录</div>
+        <div class="heading">Bind other accounts for login</div>
 
         <% if !Setting.sso_enabled? %>
           <% if Setting.has_module? :github %>
@@ -28,9 +28,9 @@
               <li class="list-group-item">
                 <% if @user.bind? provider %>
                   <%= t("omniauth.#{provider}") %>
-                  <%= link_to(raw('<i class="fa fa-remove"></i>'),"/setting/auth/#{provider}", rel: "twitsy", title: "点击解除绑定", method: 'delete' )%>
+                  <%= link_to(raw('<i class="fa fa-remove"></i>'),"/setting/auth/#{provider}", rel: "twitsy", title: "Click Unbind", method: 'delete' )%>
                 <% else %>
-                  <%= link_to(t("omniauth.#{provider}"), "/account/auth/#{provider}", rel: "twitsy", title: "点击绑定" )%>
+                  <%= link_to(t("omniauth.#{provider}"), "/account/auth/#{provider}", rel: "twitsy", title: "Click Unbind" )%>
                 <% end %>
               </li>
               <% end %>
