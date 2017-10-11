@@ -8,7 +8,7 @@ module LikesHelper
   def likeable_tag(likeable, opts = {})
     return "" if likeable.blank?
 
-    label = "#{likeable.likes_count} 个赞"
+    label = "#{likeable.likes_count} Praise"
     label = "" if likeable.likes_count == 0
 
     liked = false
@@ -23,9 +23,9 @@ module LikesHelper
 
     title, state, icon_name =
       if opts[:cache].blank? && liked
-        %w(取消赞 active heart)
+        %w(Dislike active heart)
       else
-        ["赞", "", "heart"]
+        ["Thumbs up", "", "heart"]
       end
 
     icon_label = icon_tag(icon_name, label: label)
