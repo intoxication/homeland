@@ -7,22 +7,22 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>选择原因</label>
+          <label>Choose reason</label>
           <select class="form-control" onchange="$('#ban-modal textarea').val($(this).val())" name="reason">
-            <option value="" selected>直接屏蔽</option>
+            <option value="" selected>Direct shielding</option>
             <% Setting.ban_reason_list.each do |str| %>
             <option value="<%= str %>"><%= str %></option>
             <% end %>
           </select>
         </div>
         <div class="form-group">
-          <label>或手工输入原因:</label>
+          <label>Or manually enter the cause:</label>
           <textarea class="form-control" name="reason_text" rows="4"></textarea>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">确定</button>
-        <a class="btn btn-default" data-dismiss="modal">取消</a>
+        <button type="submit" class="btn btn-primary">determine</button>
+        <a class="btn btn-default" data-dismiss="modal">cancel</a>
       </div>
       <% end %>
     </div>
