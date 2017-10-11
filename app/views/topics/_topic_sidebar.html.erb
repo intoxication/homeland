@@ -20,7 +20,7 @@
       <hr />
       <div class="reply-buttons">
         <div class="total">
-          共收到 <b><%= @topic.replies_count %></b> 条回复
+          Received <b><%= @topic.replies_count %></b>Reply
         </div>
         <%= reward_user_tag(@topic.user) %>
       </div>
@@ -29,15 +29,15 @@
         <% if admin? %>
           <div style="margin-bottom: 8px">
             <% if !@topic.suggested_at.blank? %>
-            <%= link_to raw("<i class='fa fa-angle-double-up'></i> 取消"), unsuggest_admin_topic_path(@topic), method: :post, remote: true %>
+            <%= link_to raw("<i class='fa fa-angle-double-up'></i> cancel"), unsuggest_admin_topic_path(@topic), method: :post, remote: true %>
             <% else %>
-            <%= link_to raw("<i class='fa fa-angle-double-up'></i> 置顶"), suggest_admin_topic_path(@topic), method: :post, remote: true %>
+            <%= link_to raw("<i class='fa fa-angle-double-up'></i> Sticky"), suggest_admin_topic_path(@topic), method: :post, remote: true %>
             <% end %>
             <% if !@topic.excellent? %>
-            <%= link_to raw("<i class='fa fa-diamond'></i> 加精"), action_topic_path(@topic, type: 'excellent'), method: "post", remote: true %>
+            <%= link_to raw("<i class='fa fa-diamond'></i>Add fine"), action_topic_path(@topic, type: 'excellent'), method: "post", remote: true %>
             <% end %>
             <% if @topic.node_id != Node.no_point.id %>
-              <%= link_to raw("<i class='fa fa-ban'></i> 屏蔽"), ban_topic_path(@topic), remote: true, title: "屏蔽此贴，移动到 NoPoint 节点" %>
+              <%= link_to raw("<i class='fa fa-ban'></i>shield"), ban_topic_path(@topic), remote: true, title: "Mask this sticker, move to NoPoint 节点" %>
             <% end %>
           </div>
         <% end %>
@@ -46,14 +46,14 @@
         <div>
           <% if can?(:close, @topic) %>
             <% if !@topic.closed? %>
-              <%= link_to raw("<i class='fa fa-check'></i> 结束"), action_topic_path(@topic, type: 'close'), method: 'post', title: "关闭讨论／问题已解决", remote: true, data: { toggle: 'tooltip' } %>
+              <%= link_to raw("<i class='fa fa-check'></i> End"), action_topic_path(@topic, type: 'close'), method: 'post', title: "End", remote: true, data: { toggle: 'tooltip' } %>
             <% else %>
-              <%= link_to raw("<i class='fa fa-undo'></i> 开启"), action_topic_path(@topic, type: 'open'), method: 'post', title: "重新开启话题", remote: true, data: { toggle: 'tooltip' } %>
+              <%= link_to raw("<i class='fa fa-undo'></i> 开启"), action_topic_path(@topic, type: 'open'), method: 'post', title: "Reopen the topic", remote: true, data: { toggle: 'tooltip' } %>
             <% end %>
           <% end %>
-          <%= link_to raw('<i class="fa fa-pencil"></i> 编辑'), edit_topic_path(@topic), title: "修改本帖" %>
+          <%= link_to raw('<i class="fa fa-pencil"></i> edit'), edit_topic_path(@topic), title: "Modify this post" %>
           <% if can?(:destroy, @topic) %>
-            <%= link_to raw('<i class="fa fa-trash"></i> 删除'), topic_path(@topic.id), method: :delete, 'data-confirm' => t("common.confirm_delete"), title: "删除本帖", remote: true %>
+            <%= link_to raw('<i class="fa fa-trash"></i> delete'), topic_path(@topic.id), method: :delete, 'data-confirm' => t("common.confirm_delete"), title: "Delete this post", remote: true %>
           <% end %>
         </div>
         <% end %>
@@ -63,6 +63,6 @@
   </div>
 
   <div class="notify-updated">
-    <a class="update" href="#"><i class="fa fa-bell-o"></i> <b>有新回复！</b>点击这里立即载入</a>
+    <a class="update" href="#"><i class="fa fa-bell-o"></i> <b>Have a new reply!</b>Click here to load now</a>
   </div>
 </div>
