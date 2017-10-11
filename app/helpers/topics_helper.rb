@@ -4,10 +4,10 @@ module TopicsHelper
     return "" if current_user.blank?
     opts[:class] ||= ""
     class_name = ""
-    link_title = "收藏"
+    link_title = "Collection"
     if current_user && current_user.favorite_topic?(topic)
       class_name = "active"
-      link_title = "取消收藏"
+      link_title = "Cancel collection"
     end
 
     icon = raw(content_tag("i", "", class: "fa fa-bookmark"))
@@ -15,7 +15,7 @@ module TopicsHelper
       class_name += " " + opts[:class]
     end
 
-    link_to(raw("#{icon} 收藏"), "#", title: link_title, class: "bookmark #{class_name}", "data-id" => topic.id)
+    link_to(raw("#{icon} Collection"), "#", title: link_title, class: "bookmark #{class_name}", "data-id" => topic.id)
   end
 
   def topic_follow_tag(topic, opts = {})
@@ -29,7 +29,7 @@ module TopicsHelper
       class_name += " " + opts[:class]
     end
     icon = content_tag("i", "", class: "fa fa-eye")
-    link_to(raw("#{icon} 关注"), "#", "data-id" => topic.id, class: class_name)
+    link_to(raw("#{icon} attention"), "#", "data-id" => topic.id, class: class_name)
   end
 
   def topic_title_tag(topic, opts = {})
@@ -50,7 +50,7 @@ module TopicsHelper
 
   def topic_close_tag(topic)
     return "" unless topic.closed?
-    content_tag(:i, "", title: "问题已解决／话题已结束讨论", class: "fa fa-check", data: { toggle: "tooltip" })
+    content_tag(:i, "", title: "Problem solved / topic has ended discussion", class: "fa fa-check", data: { toggle: "tooltip" })
   end
 
   def render_node_name(name, id)
