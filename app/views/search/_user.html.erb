@@ -12,10 +12,10 @@
         <span class="level"><%= render_user_level_tag(item) %></span>
       </div>
       <div class="info number">
-        第 <%= item.id %> 位<%= t("menu.users")%>
+        First <%= item.id %>Bit<%= t("menu.users")%>
          •
         <span title="Registration date"><%= item.created_at.to_date %></span>
-        <% if item.location.present? %> • <span title="所在地"><%= location_name_tag(item.location) %></span><% end %>
+        <% if item.location.present? %> • <span title="location"><%= location_name_tag(item.location) %></span><% end %>
          •
         <span><%= item.topics_count %></span> Posts • <span><%= item.replies_count %></span> Replies
       </div>
